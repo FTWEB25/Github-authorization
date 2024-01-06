@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        background-color: rgb(202, 199, 199);
+        justify-content: center;
+        align-items: center;
+      }
+      .auth-button {
+        width: 30%;
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .auth-button button {
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.5;
+        padding: 10px 30px 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        background-color: #28a745; /* GitHub green color */
+      }
+      .auth-button button:hover {
+        background-color: #218838; /* Darker shade on hover */
+      }
+      .github-icon {
+        width: 20px; /* Adjust the width and height of the icon */
+        height: auto;
+        margin-left: -25px; /* Add some space between the icon and text */
+        vertical-align: middle; /* Align the icon vertically with text */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-button">
+      
+      <button class="login-button">Login With Github</button>
+      <img
+        src="https://github.com/favicon.ico"
+        alt="GitHub Icon"
+        class="github-icon"
+      />
+    </div>
+  </body>
+  <script>
+    const CLIENT_ID="45b0fca6074f9abcd15f"
+    let loginBtn=document.querySelector(".login-button")
+    loginBtn.addEventListener("click",()=>{
+        window.location.href=`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`
+    })
+  </script>
+</html>

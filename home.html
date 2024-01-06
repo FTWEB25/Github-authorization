@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Welcome To Home Page</h1>
+      <a href="./product.html">Go To Product Page</a>
+    </div>
+  </body>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+    const token=JSON.parse(localStorage.getItem("token"))||null
+    if(code&&(token==null)){
+        fetch(`http://localhost:7070/gettoken?code=${code}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            localStorage.setItem("token",JSON.stringify(data.access_token))
+        })
+        .catch((err)=>console.log(err.message))
+    }
+  </script>
+</html>
